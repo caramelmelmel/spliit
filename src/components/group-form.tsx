@@ -62,7 +62,14 @@ export function GroupForm({
           name: group.name,
           information: group.information ?? '',
           currency: group.currency,
-          participants: group.participants,
+          participants: group.participants.map((participant) => ({
+            id: participant.id,
+            name: participant.name,
+            email:
+              (participant as any).email === null
+                ? undefined
+                : (participant as any).email,
+          })),
         }
       : {
           name: '',
