@@ -11,7 +11,7 @@ export const groupFormSchema = z
         z.object({
           id: z.string().optional(),
           name: z.string().min(2, 'min2').max(50, 'max50'),
-          email: z.string().includes('@'),
+          email: z.string().email(),
         }),
       )
       .min(1),
