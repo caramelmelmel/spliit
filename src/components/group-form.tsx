@@ -69,9 +69,9 @@ export function GroupForm({
           information: '',
           currency: process.env.NEXT_PUBLIC_DEFAULT_CURRENCY_SYMBOL || '',
           participants: [
-            { name: t('Participants.John') },
-            { name: t('Participants.Jane') },
-            { name: t('Participants.Jack') },
+            { name: t('Participants.John'), email: 'john@gmail.com' },
+            { name: t('Participants.Jane'), email: 'jane@gmail.com' },
+            { name: t('Participants.Jack'), email: 'jack@gmail.com' },
           ],
         },
   })
@@ -210,7 +210,18 @@ export function GroupForm({
                             <Input
                               className="text-base"
                               {...field}
-                              placeholder={t('Participants.new')}
+                              placeholder={t('Participants.name')}
+                            />
+                            <FormField
+                              control={form.control}
+                              name={`participants.${index}.email`}
+                              render={({ field: emailField }) => (
+                                <Input
+                                  className="text-base"
+                                  {...emailField}
+                                  placeholder={t('Participants.email')}
+                                />
+                              )}
                             />
                             {item.id &&
                             protectedParticipantIds.includes(item.id) ? (
@@ -258,7 +269,7 @@ export function GroupForm({
             <Button
               variant="secondary"
               onClick={() => {
-                append({ name: '' })
+                append({ name: '', email: '' })
               }}
               type="button"
             >

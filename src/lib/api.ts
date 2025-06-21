@@ -21,9 +21,10 @@ export async function createGroup(groupFormValues: GroupFormValues) {
       currency: groupFormValues.currency,
       participants: {
         createMany: {
-          data: groupFormValues.participants.map(({ name }) => ({
+          data: groupFormValues.participants.map(({ name, email }) => ({
             id: randomId(),
             name,
+            email,
           })),
         },
       },

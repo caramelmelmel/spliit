@@ -25,6 +25,7 @@ model Group {
 model Participant {
   id              String           @id
   name            String
+  email           String?
   group           Group            @relation(fields: [groupId], references: [id], onDelete: Cascade)
   groupId         String
   expensesPaidBy  Expense[]
