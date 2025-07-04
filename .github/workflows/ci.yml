@@ -54,5 +54,5 @@ jobs:
       
       - name: Remove Docker image from runner
         run: |
-          docker rmi ${{ github.event.repository.name }}:latest 
-          docker rmi ${{ github.event.repository.name }}:${{ github.sha }}
+          docker rmi spliit2:latest 
+          docker rmi spliit2:${{ github.sha }}
